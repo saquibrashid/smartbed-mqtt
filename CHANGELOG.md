@@ -1,3 +1,15 @@
+## v1.1.23
+
+**Bug Fixes**
+
+- (Octo) Fix under bed light state feedback feature mapping
+- (Octo) Improve under bed light command/state sync handling
+
+**Maintenance**
+
+- (Addon) Bump add-on version to 1.1.23
+- (Addon) Point add-on metadata URL to saquibrashid fork
+
 ## v1.1.22
 
 **New Features**
