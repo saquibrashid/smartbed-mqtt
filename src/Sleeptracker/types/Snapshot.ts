@@ -28,7 +28,7 @@ export type Snapshot = {
   massagePattern: MassagePattern;
   massageTimerMins: number;
   massageTimerSecs: number;
-  safetyLightOn: boolean;
+  safetyLightOn: boolean | null;
   side: 0 | 1;
 };
 /*
