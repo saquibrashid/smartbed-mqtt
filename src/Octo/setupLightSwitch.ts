@@ -16,10 +16,14 @@ export const setupLightSwitch = (
 
   const config = buildEntityConfig('UnderBedLights');
   const entity = (cache.underBedLights = new Switch(mqtt, deviceData, config, async (state: boolean) => {
+    const currentState = entity.getState();
+    if (currentState === state) return state;
+
     await writeCommand({
       command: [0x20, 0x72],
-      data: [0x00, 0x01, 0x02, 0x01, 0x01, 0x01, 0x01, state ? 0x00 : 0x01],
+      data: [0x00, 0x01, 0x02, 0x01, 0x01, 0x01, 0x01, 0x01],
     });
+    await writeCommand([0x20, 0x71]);
 
     return state;
   }).setState(initialLightState));
