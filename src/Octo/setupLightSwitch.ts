@@ -18,7 +18,7 @@ export const setupLightSwitch = (
   const entity = (cache.underBedLights = new Switch(mqtt, deviceData, config, async (state: boolean) => {
     await writeCommand({
       command: [0x20, 0x72],
-      data: [0x00, 0x01, 0x02, 0x01, 0x01, 0x01, 0x01, state ? 0x01 : 0x00],
+      data: [0x00, 0x01, 0x02, 0x01, 0x01, 0x01, 0x01, state ? 0x00 : 0x01],
     });
 
     return state;
@@ -32,7 +32,7 @@ export const setupLightSwitch = (
       const featureValuePair = extractFeatureValuePairFromData(data);
       if (!featureValuePair) return;
       const { feature, value } = featureValuePair;
-      if (feature == 0x3) entity.setState(value[0] == 0x01);
+      if (feature == 0x102) entity.setState(value[0] == 0x01);
     }
   });
 };
