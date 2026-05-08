@@ -9,14 +9,16 @@ import { IEventSource } from 'Common/IEventSource';
 
 export const setupLightSwitch = (
   mqtt: IMQTTConnection,
-  { cache, deviceData, writeCommand, on }: IController<number[] | Command> & IEventSource,
+  { cache, deviceData, writeCommand, on }: (IController<number[] | Command> & IEventSource) & {
+    cache: { underBedLights?: Switch };
+  },
   initialLightState: boolean
 ) => {
   if (cache.underBedLights) return;
 
   const config = buildEntityConfig('UnderBedLights');
   const entity = (cache.underBedLights = new Switch(mqtt, deviceData, config, async (state: boolean) => {
-    const currentState = entity.getState();
+    const currentState = cache.underBedLights?.getState();
     if (currentState === state) return state;
 
     await writeCommand({
