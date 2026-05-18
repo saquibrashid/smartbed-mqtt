@@ -1,3 +1,13 @@
+## v1.1.27
+
+**Bug Fixes**
+
+- (Sleeptracker) Handle null body in adjustableBaseControls response to prevent TypeError on upstream 503 errors
+
+**Maintenance**
+
+- (Addon) Bump add-on version to 1.1.27
+
 ## v1.1.23
 
 **Bug Fixes**
