@@ -30,8 +30,9 @@ export const processSafetyLightSwitches = async (
         }
         return state;
       }
-    ).setOnline();
+    );
   }
+  cache.safetyLightSwitch.setOnline();
   if (typeof safetyLightOn === 'boolean') {
     cache.safetyLightSwitch.setState(safetyLightOn);
   }
